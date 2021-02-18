@@ -1,0 +1,14 @@
+{
+  "name": "lan-bot",
+  "version": "1.0.0",
+  "description": "LAN-Party Bot",
+  "main": "bot.js",
+  "author": "Fabi",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^12.5.1",
+    "sleep": "^6.3.0",
+    "string-width": "^4.2.0",
+    "winston": "^3.2.1"
+  }
+}

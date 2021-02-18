@@ -1,0 +1,8 @@
+{
+    "ping": "Gibt den Ping für den Bot zurück, um die Verbindung zu testen!",
+    "help": "Hilfefunktion zu einem Befehl. Erwartet 1 Argument!",
+    "befehle": "Gibt einer Liste aller Befehle aus",
+    "bier": "Zähler für geöffnete Biere",
+    "resetme": "Setzt alle deine gespeicherten Werte zurück. IRREVERSIBLE!",
+    "maketeams": "Nimmt eine mit Leerzeichen getrennte Reihe von Mitspielern entgegen und würfelt zwei Teams aus"
+}

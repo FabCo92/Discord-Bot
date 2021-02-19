@@ -1,4 +1,5 @@
 const { ConsoleTransportOptions } = require('winston/lib/winston/transports');
+const { inflateRawSync } = require('zlib');
 
 module.exports = {
     name: 'bierscore',
@@ -18,40 +19,38 @@ module.exports = {
             userToBeer.set(userData[i].Name, userData[i].Biere);
         }
 
-        var sortierteListe = new Array();
-        sortierteListe[0] = userToBeer.keys().next().value;
+        var sortedArray = new Array();
+        sortedArray[0] = userToBeer.keys().next().value;
         console.log(userToBeer.entries());
         // userToBeer.forEach((u,b) => {
         //     console.log(u,b);
         // })
-        for (let iter = 0; iter < sortierteListe.length; iter++) {
-            userToBeer.forEach((beer, user) => {
-                console.log(beer, user)
-                console.log(sortierteListe[iter])
-                if (user != sortierteListe[iter]) {
-                    console.log(user + " ist nicht gleich " + sortierteListe[iter])
-                    if (beer > userToBeer.get(sortierteListe[iter])) {
-                        console.log(beer + " ist größer als " + userToBeer.get(sortierteListe[iter]));
-                        console.log(sortierteListe[i])
-                        sortierteListe[iter + 1] = sortierteListe[iter];
-                        sortierteListe[iter] = user;
-                        console.log(sortierteListe);
+        for (const [key, value] of userToBeer.entries()) {
+            console.log(`${key}: ${value}`);
+            for (var iter = 0; iter < userToBeer.size; iter++) {
+                if (key != sortedArray[iter]){
+                    if(value > userToBeer.get(sortedArray[iter])){
+                        sortedArray[iter-1] = sortedArray[iter];
+                        sortedArray[iter] = key;
+                        console.log(sortedArray)
+                        break;
                     }
                 }
-            })
+        }
         }
 
-        console.log(sortierteListe.length)
-        console.log(sortierteListe)
+
+        // console.log(sortedArray.length)
+        // console.log(sortedArray)
         const imgpath = 'https://www.bier.de/wp-content/uploads/2017/11/171102-bierde-blog-export-1.jpg'
         bierEmbed = new Discord.MessageEmbed()
             .setColor('#FF00FF')
             .setTitle('Wer hat am meisten Bier drin?')
             .setThumbnail(imgpath)
 
-        // for (let k = scoreboardAsc.length - 1; k >= 0; k--) {
-        //     bierEmbed.addField(scoreboardAsc.length - k + ".Platz: " + scoreboardAsc[k], "Biere " + userToBeer.get(scoreboardAsc[k]));
-        // }
+        for (let k = 0; k < sortedArray.length; k++) {
+            bierEmbed.addField(sortedArray.length - k + ".Platz: " + sortedArray[k], "Biere " + userToBeer.get(sortedArray[k]));
+        }
 
         msg.channel.send(bierEmbed);
     }

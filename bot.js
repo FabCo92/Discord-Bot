@@ -40,7 +40,7 @@ bot.on('message', function (message) {
             message.reply("Mein Entwickler hat hier irgendwie Mist gebaut - verprügelt ihn!");
         }
     } else {
-        message.channel.send("Das ist kein Befehl für mich, wie wärs wenn du mal !befehle liest?");
+        message.reply("Das ist kein Befehl für mich, wie wärs wenn du mal !befehle liest?");
     }
 });
 

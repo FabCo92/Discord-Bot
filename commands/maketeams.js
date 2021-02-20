@@ -6,7 +6,7 @@ module.exports = {
             const j = Math.floor(Math.random() * (i + 1));
             [args[i], args[j]] = [args[j], args[i]];
         }
-    
+
         msg.channel.send(" Deus Ex Machina wählt:\nTeam 1:\n");
         var counter = args.length / 2;
         args.forEach(person => {
@@ -20,6 +20,6 @@ module.exports = {
                 msg.channel.send(person);
             }
         })
-    
+
     }
 }

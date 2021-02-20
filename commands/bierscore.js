@@ -21,27 +21,18 @@ module.exports = {
 
         var sortedArray = new Array();
         sortedArray[0] = userToBeer.keys().next().value;
-        console.log(userToBeer.entries());
-        // userToBeer.forEach((u,b) => {
-        //     console.log(u,b);
-        // })
         for (const [key, value] of userToBeer.entries()) {
-            console.log(`${key}: ${value}`);
             for (var iter = 0; iter < userToBeer.size; iter++) {
-                if (key != sortedArray[iter]){
-                    if(value > userToBeer.get(sortedArray[iter])){
-                        sortedArray[iter-1] = sortedArray[iter];
+                if (key != sortedArray[iter]) {
+                    if (value > userToBeer.get(sortedArray[iter])) {
+                        sortedArray[iter - 1] = sortedArray[iter];
                         sortedArray[iter] = key;
                         console.log(sortedArray)
                         break;
                     }
                 }
+            }
         }
-        }
-
-
-        // console.log(sortedArray.length)
-        // console.log(sortedArray)
         const imgpath = 'https://www.bier.de/wp-content/uploads/2017/11/171102-bierde-blog-export-1.jpg'
         bierEmbed = new Discord.MessageEmbed()
             .setColor('#FF00FF')

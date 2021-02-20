@@ -21,8 +21,8 @@ module.exports = {
             .setAuthor('entwickelt von Fabse', '', 'https://github.com/FabCo92/Discord-Bot')
             .setDescription('Hier findet ihr eine Übersicht über meine Befehle:')
             .setImage(imagepath)
-        commands.forEach((key,val) => {
-            befehleEmbed.addField("!"+ val, key+ "\n");
+        commands.forEach((key, val) => {
+            befehleEmbed.addField("!" + val, key + "\n");
         })
 
         msg.channel.send(befehleEmbed);

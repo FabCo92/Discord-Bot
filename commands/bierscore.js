@@ -37,7 +37,12 @@ module.exports = {
         bierEmbed = new Discord.MessageEmbed()
             .setColor('#FF00FF')
             .setTitle('Wer hat am meisten Bier drin?')
-            .setThumbnail(imgpath)
+        try{
+            bierEmbed.setThumbnail(imgpath)
+        }
+        catch{
+            console.log("Konnte Bild nicht laden!")
+        }
 
         for (let k = 0; k < sortedArray.length; k++) {
             bierEmbed.addField(sortedArray.length - k + ".Platz: " + sortedArray[k], "Biere " + userToBeer.get(sortedArray[k]));

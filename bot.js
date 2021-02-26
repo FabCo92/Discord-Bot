@@ -1,6 +1,5 @@
 require('dotenv').config();
 var Discord = require('discord.js');
-var auth = require('./auth.json');
 var fs = require('fs');
 var sleep = require('sleep');
 // const

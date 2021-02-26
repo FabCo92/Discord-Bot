@@ -23,6 +23,9 @@ bot.on('ready', () => {
     console.log("Bot läuft!");
 });
 
+bot.on('error', console.log);
+
+
 bot.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 

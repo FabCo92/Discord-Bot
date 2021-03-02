@@ -1,16 +1,12 @@
+require('dotenv').config();
 var Discord = require('discord.js');
-var auth = require('./auth.json');
 var fs = require('fs');
 var sleep = require('sleep');
 // const
 const prefix = "!";
 
-// Initialize Discord Bot
-var bot = new Discord.Client({
-    token: auth.token,
-    autorun: true,
-    disableEveryone: false,
-});
+// // Initialize Discord Bot
+var bot = new Discord.Client();
 
 // init all Commands in attribute commands
 bot.commands = new Discord.Collection();
@@ -22,11 +18,14 @@ for (const file of commandFiles) {
 
 
 // Further Information on init
-bot.on('ready', function (evt) {
+bot.on('ready', () => {
     console.log("Bot läuft!");
 });
 
-bot.on('message', function (message) {
+bot.on('error', console.log);
+
+
+bot.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -44,6 +43,6 @@ bot.on('message', function (message) {
     }
 });
 
-bot.login(auth.token);
+bot.login();
 
 

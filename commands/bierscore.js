@@ -33,23 +33,25 @@ module.exports = {
                 }
             }
         }
-        const imgpath = 'https://www.bier.de/wp-content/uploads/2017/11/171102-bierde-blog-export-1.jpg'
+
+        const botRoot = process.cwd();
+        const attachment = new Discord.MessageAttachment(botRoot + '/images/bier.jpg', 'bier.jpg');
         bierEmbed = new Discord.MessageEmbed()
             .setColor('#FF00FF')
             .setTitle('Wer hat am meisten Bier drin?')
-        try{
-            bierEmbed.setThumbnail(imgpath)
-        }
-        catch{
-            console.log("Konnte Bild nicht laden!")
-        }
+            .attachFiles(attachment)
+        bierEmbed.setThumbnail('attachment://bier.jpg')
 
         for (let k = 0; k < sortedArray.length; k++) {
-            bierEmbed.addField(sortedArray.length - k + ".Platz: " + sortedArray[k], "Biere " + userToBeer.get(sortedArray[k]));
+            if (!sortedArray[k]) {
+                bierEmbed.addField("Leider hat noch keiner ein Bier getrunken. Was ist los mit euch?");
+            }
+            else {
+                bierEmbed.addField(sortedArray.length - k + ".Platz: " + sortedArray[k], "Biere " + userToBeer.get(sortedArray[k]));
+            }
         }
 
         msg.channel.send(bierEmbed);
     }
-
 
 }

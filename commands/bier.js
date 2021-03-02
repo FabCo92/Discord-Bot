@@ -17,7 +17,7 @@ module.exports = {
         fs.writeFileSync(path.resolve(__dirname, "userData.json"), JSON.stringify(userData), (err) => {
             if (err) console.error(err);
         })
-
+        msg.react('🍻')
         msg.reply(`Prost! Lass es dir schmecken. \nGetrunkene Biere: ${userData[msg.author.id].Biere}`)
     }
 

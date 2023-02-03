@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "LAN-Party Bot",
   "main": "bot.js",
-  "author": "Fabi",
+  "author": "FabCo",
   "dependencies": {
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
